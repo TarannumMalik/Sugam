@@ -153,15 +153,19 @@
 
 
 /*** Navbar ***/
+.navbar-light{
+     background: var(--bs-light);
+}
 .navbar-light .navbar-nav .nav-link {
     font-family: 'Roboto', sans-serif;
     position: relative;
     padding: 20px 15px;
-    color: var(--bs-white) !important;
+    /* color: var(--bs-white) !important; */
     font-size: 17px;
     font-weight: 400;
     outline: none;
     transition: .5s;
+   
 }
 
 .sticky-top.navbar-light .navbar-nav .nav-link {
@@ -260,8 +264,11 @@
     }
 
     .navbar-light .navbar-brand img {
-        max-height: 45px;
+        max-height: 50px;
     }
+     .navbar-light {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+     }
 }
 
 @media (min-width: 992px) {
@@ -277,6 +284,7 @@
     .sticky-top.navbar-light {
         position: fixed;
         background: var(--bs-light);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     .navbar-light .navbar-nav .nav-link::before {
