@@ -151,7 +151,7 @@
 }
 
 .hero .hero-features {
-  background: #172624;
+  background: #f9f9f9;
   padding: 4rem 0;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
@@ -203,7 +203,7 @@
 }
 
 .hero .hero-features .feature-item:hover .icon i {
-  color: var(--contrast-color);
+  color: #ffffff;
 }
 
 @media (max-width: 992px) {
