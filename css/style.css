@@ -507,6 +507,41 @@
 .destination .tab-class .tab-content .destination-img:hover img {
     transform: scale(1.2);
 }
+
+
+      .national-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.national-item img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+    cursor: pointer;
+}
+.national-item:hover img {
+    transform: scale(1.2);
+}
+
+/* TEXT ON IMAGE */
+.national-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    /* background: rgba(0, 0, 0, 0.5); x */
+}
+
+/* ICON ON IMAGE */
+.national-plus-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 /*** Destination End ***/
 
 
@@ -856,7 +891,7 @@
 }
 
 .gallery .gallery-item:hover .gallery-content {
-    background: rgba(19, 53, 123, 0.8);
+    background: rgba(19, 54, 123, 0.568);
 }
 
 .gallery .tab-class .nav-item {
