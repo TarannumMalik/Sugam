@@ -157,6 +157,9 @@
                     <p class="mb-4">Get in touch with our team for quick support, travel assistance, and inquiries. We
                         are always ready to help you anytime.</p>
                     <form id="contact-form">
+                        <!-- ADD ONLY THESE TWO LINES -->
+                        <input type="hidden" name="_subject" value="✈️ New Travel Inquiry — Sugam Travel Website" />
+                        <!-- <input type="hidden" name="_replyto" value="maliktarannum883@gmail.com" /> -->
                         <div class="row g-3">
 
                             <div class="col-md-6">
@@ -200,7 +203,7 @@
                         </div>
                     </form>
 
-                    <!-- <p id="status"></p> -->
+                    <p id="status"></p>
                 </div>
                 <div class="col-12">
                     <div class="rounded">
@@ -226,12 +229,19 @@
                     and special offers. Stay updated and never miss your next adventure. Your dream trip starts here.
                     ✈️🌍
                 </p>
-                <div class="position-relative mx-auto">
-                    <input class="form-control border-primary rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                        placeholder="Your email">
-                    <button type="button"
-                        class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
-                </div>
+                <form id="newsletter-form" action="https://formspree.io/f/mzdoyvkd" method="POST">
+
+                    <!-- Hidden fields for clean email -->
+                    <input type="hidden" name="_subject" value="📧 New Newsletter Subscriber — Sugam Travel" />
+                    <div class="position-relative mx-auto">
+                        <input class="form-control border-primary rounded-pill w-100 py-3 ps-4 pe-5" type="email"
+                            name="email" placeholder="Your email" required />
+                        <button type="submit"
+                            class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2"
+                            id="newsletter-btn">Subscribe</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -366,54 +376,9 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
 
-   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // 🔑 Initialize EmailJS
-    emailjs.init("7wDFdiMTItqpNlQpJ"); // replace this
-
-    const form = document.getElementById("contact-form");
-    // const status = document.getElementById("status");
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Collect form data
-        const formData = {
-            name: form.name.value,
-            email: form.email.value,
-            subject: form.subject.value,
-            message: form.message.value
-        };
-
-        // Show loading message
-        status.innerHTML = "⏳ Sending...";
-
-        // 📩 Send email to YOU
-        emailjs.send("service_p8l4f2h", "template_zt1og5u", formData)
-        .then(function () {
-
-            // 📬 Auto reply to USER
-            // return emailjs.send("service_p8l4f2h", "YOUR_AUTO_REPLY_TEMPLATE_ID", formData);
-
-        })
-        .then(function () {
-            status.innerHTML = "✅ Message sent successfully!";
-            form.reset();
-        })
-        .catch(function (error) {
-            console.error("EmailJS Error:", error);
-            status.innerHTML = "❌ Failed to send message.";
-        });
-
-    });
-
-});
-</script>
 </body>
 
 </html>
