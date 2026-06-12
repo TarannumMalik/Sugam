@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /about.html
+Disallow: /404.html
+Disallow: /blog.html
+Disallow: /booking.html
+Disallow: /destination.html
+Disallow: / gallery.html
+Disallow: / guiders.html
+Disallow: /services.html
+Disallow: /testimonial.html
+Disallow: /tour.html
