@@ -159,7 +159,11 @@
 
 
 
-// FORMSPREE_ID removed — no longer needed
+const EMAILJS_PUBLIC_KEY          = "7wDFdiMTItqpNlQpJ";
+const EMAILJS_SERVICE_ID          = "service_nkfc93i";
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_x1tndxd";
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 /* ── Inject modal HTML + CSS once ── */
 (function injectModal() {
@@ -299,24 +303,12 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending…`;
 
   try {
-    // ← only this URL changed: was Formspree, now your own PHP file
-    const res = await fetch(`send-mail.php`, {
-      method:  "POST",
-      body:    new FormData(form),
-      headers: { Accept: "application/json" },
-    });
-
-    const data = await res.json().catch(() => ({}));
-
-    if (res.ok) {
-      form.reset();
-      showModal("success", "Message Sent! 🎉", "Thanks for reaching out! We'll get back to you as soon as possible.");
-    } else {
-      const msg = data?.errors?.map(err => err.message).join(", ") || "Something went wrong. Please try again.";
-      showModal("error", "Oops! Something went wrong.", msg);
-    }
-  } catch {
-    showModal("error", "Network Error", "Could not send your message. Please check your connection and try again.");
+    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, form);
+    form.reset();
+    showModal("success", "Message Sent! 🎉", "Thanks for reaching out! We'll get back to you as soon as possible.");
+  } catch (error) {
+    console.error(error);
+    showModal("error", "Oops! Something went wrong.", "Could not send your message. Please try again in a moment.");
   } finally {
     btn.disabled  = false;
     btn.innerHTML = originalText;
