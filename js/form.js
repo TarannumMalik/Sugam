@@ -316,7 +316,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
 });
 
 
-
+const EMAILJS_NEWSLETTER_TEMPLATE_ID = "template_oobr9yp";
 // newsletter
 document.getElementById("newsletter-form").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -329,20 +329,12 @@ document.getElementById("newsletter-form").addEventListener("submit", async func
   btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1" role="status"></span>`;
 
   try {
-    const res = await fetch(form.action, {
-      method:  "POST",
-      body:    new FormData(form),
-      headers: { Accept: "application/json" },
-    });
-
-    if (res.ok) {
-      form.reset();
-      showModal("success", "Subscribed! 🎉", "Thank you for subscribing to Sugam Travel newsletter. We'll keep you updated with the best travel deals!");
-    } else {
-      showModal("error", "Oops!", "Something went wrong. Please try again.");
-    }
-  } catch {
-    showModal("error", "Network Error", "Could not subscribe. Please check your connection.");
+    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_NEWSLETTER_TEMPLATE_ID, form);
+    form.reset();
+    showModal("success", "Subscribed! 🎉", "Thank you for subscribing to Sugam Travel newsletter. We'll keep you updated with the best travel deals!");
+  } catch (error) {
+    console.error(error);
+    showModal("error", "Oops!", "Something went wrong. Please try again.");
   } finally {
     btn.disabled  = false;
     btn.innerHTML = original;
