@@ -134,51 +134,57 @@ function closeModal() {
 }
 
 /* ── Contact form ── */
-document.getElementById("contact-form").addEventListener("submit", async function (e) {
-  e.preventDefault();
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const btn  = form.querySelector("button[type='submit']");
+    const form = e.target;
+    const btn  = form.querySelector("button[type='submit']");
 
-  const originalText = btn.innerHTML;
-  btn.disabled  = true;
-  btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending…`;
+    const originalText = btn.innerHTML;
+    btn.disabled  = true;
+    btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending…`;
 
-  try {
-    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, form);
-    form.reset();
-    showModal("success", "Message Sent! 🎉", "Thanks for reaching out! We'll get back to you as soon as possible.");
-  } catch (error) {
-    console.error(error);
-    showModal("error", "Oops! Something went wrong.", "Could not send your message. Please try again in a moment.");
-  } finally {
-    btn.disabled  = false;
-    btn.innerHTML = originalText;
-  }
-});
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, form);
+      form.reset();
+      showModal("success", "Message Sent! 🎉", "Thanks for reaching out! We'll get back to you as soon as possible.");
+    } catch (error) {
+      console.error(error);
+      showModal("error", "Oops! Something went wrong.", "Could not send your message. Please try again in a moment.");
+    } finally {
+      btn.disabled  = false;
+      btn.innerHTML = originalText;
+    }
+  });
+}
 
 /* ── Newsletter form ── */
-document.getElementById("newsletter-form").addEventListener("submit", async function (e) {
-  e.preventDefault();
+const newsletterForm = document.getElementById("newsletter-form");
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const btn  = document.getElementById("newsletter-btn");
-  const original = btn.innerHTML;
+    const form = e.target;
+    const btn  = document.getElementById("newsletter-btn");
+    const original = btn.innerHTML;
 
-  btn.disabled = true;
-  btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1" role="status"></span>`;
+    btn.disabled = true;
+    btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1" role="status"></span>`;
 
-  try {
-    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_NEWSLETTER_TEMPLATE_ID, form);
-    form.reset();
-    showModal("success", "Subscribed! 🎉", "Thank you for subscribing to Sugam Travel newsletter. We'll keep you updated with the best travel deals!");
-  } catch (error) {
-    console.error(error);
-    showModal("error", "Oops!", "Something went wrong. Please try again.");
-  } finally {
-    btn.disabled  = false;
-    btn.innerHTML = original;
-  }
-});
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_NEWSLETTER_TEMPLATE_ID, form);
+      form.reset();
+      showModal("success", "Subscribed! 🎉", "Thank you for subscribing to Sugam Travel newsletter. We'll keep you updated with the best travel deals!");
+    } catch (error) {
+      console.error(error);
+      showModal("error", "Oops!", "Something went wrong. Please try again.");
+    } finally {
+      btn.disabled  = false;
+      btn.innerHTML = original;
+    }
+  });
+}
 
 });
