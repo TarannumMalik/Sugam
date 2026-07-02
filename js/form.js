@@ -1,8 +1,9 @@
+document.addEventListener("DOMContentLoaded", function () {
+
 const EMAILJS_PUBLIC_KEY          = "7wDFdiMTItqpNlQpJ";
 const EMAILJS_SERVICE_ID          = "service_nkfc93i";
 const EMAILJS_CONTACT_TEMPLATE_ID = "template_x1tndxd";
 const EMAILJS_NEWSLETTER_TEMPLATE_ID = "template_oobr9yp";
-
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -132,7 +133,7 @@ function closeModal() {
   document.getElementById("cf-overlay").classList.remove("show");
 }
 
-/* ── Form submit handler ── */
+/* ── Contact form ── */
 document.getElementById("contact-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -156,8 +157,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   }
 });
 
-
-// newsletter
+/* ── Newsletter form ── */
 document.getElementById("newsletter-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -179,4 +179,6 @@ document.getElementById("newsletter-form").addEventListener("submit", async func
     btn.disabled  = false;
     btn.innerHTML = original;
   }
+});
+
 });
