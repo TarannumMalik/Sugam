@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-const EMAILJS_PUBLIC_KEY          = "7wDFdiMTItqpNlQpJ";
+const EMAILJS_PUBLIC_KEY          = "dEu6NpYPedZYJO_Zs";
 const EMAILJS_SERVICE_ID          = "service_9k4ws9k";
 const EMAILJS_CONTACT_TEMPLATE_ID = "template_x1tndxd";
 const EMAILJS_NEWSLETTER_TEMPLATE_ID = "template_oobr9yp";
